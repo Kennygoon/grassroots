@@ -20,6 +20,28 @@
   a:hover { color: #3F6B47; }
   ::selection { background: #3F6B47; color: #F1F2ED; }
   @media (max-width: 700px) { .nav-links { display: none !important; } }
+  .sg-card { margin-top: clamp(28px,4vw,40px); max-width: 560px; background: #F7F6F1; border: 1px solid rgba(27,50,39,0.16); padding: clamp(20px,3vw,32px); }
+  .sg-count { display: flex; justify-content: space-between; font-size: 13px; color: #54685B; margin-bottom: 14px; }
+  .sg-track { height: 6px; background: rgba(27,50,39,0.14); margin: -6px 0 22px; }
+  .sg-fill { height: 100%; background: #3F6B47; width: 0%; }
+  .sg-label { display: block; font-size: 14px; font-weight: 500; margin: 0 0 6px; padding: 0; color: #1B3227; }
+  .sg-input { display: block; width: 100%; padding: 12px 14px; margin: 0 0 18px; border: 1px solid rgba(27,50,39,0.3); border-radius: 0; font-size: 15px; background: #fff; color: #1B3227; font-family: inherit; }
+  .sg-input:focus { outline: 2px solid #3F6B47; outline-offset: 1px; }
+  .sg-hint { font-size: 12.5px; color: #54685B; margin: -12px 0 18px; line-height: 1.6; }
+  .sg-radios { border: none; margin: 0 0 20px; padding: 0; }
+  .sg-radio { display: inline-flex; align-items: center; font-size: 15px; margin-right: 22px; cursor: pointer; }
+  .sg-radio input { margin: 0 7px 0 0; }
+  .sg-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .sg-consent { display: flex; align-items: flex-start; margin: 0 0 22px; }
+  .sg-consent input { margin: 4px 10px 0 0; flex: 0 0 auto; }
+  .sg-consent label { font-size: 13px; line-height: 1.7; color: #4C5F53; }
+  .sg-btn { width: 100%; padding: 15px; background: #3F6B47; color: #F7F6F1; border: none; border-radius: 0; font-size: 16px; font-weight: 500; font-family: inherit; cursor: pointer; }
+  .sg-btn:hover { background: #2E5236; }
+  .sg-btn:disabled { opacity: .55; cursor: not-allowed; }
+  .sg-msg { margin: 14px 0 0; padding: 12px 14px; font-size: 14.5px; line-height: 1.7; }
+  .sg-msg.ok { background: #E1EEDC; color: #2D4F2A; border: 1px solid #BFD6B8; }
+  .sg-msg.err { background: #F7E6E3; color: #7A2A20; border: 1px solid #E3BDB6; }
+  .sg-msg.info { background: #EEF0EA; color: #4C5F53; border: 1px solid rgba(27,50,39,0.16); }
 </style>
 </helmet>
 
@@ -41,6 +63,7 @@
             <a href="#work" style="font-size:14px;font-weight:400">하는 일</a>
             <a href="#policy" style="font-size:14px;font-weight:400">정책 과제</a>
             <a href="#notice" style="font-size:14px;font-weight:400">활동 및 공지사항</a>
+            <a href="#sign" style="font-size:14px;font-weight:400">서명하기</a>
           </span>
         <a href="http://www.ihappynanum.com/Nanum/B/CNCHWZ44QB" target="_blank" rel="noopener" aria-label="ARS 후원전화 1866-3866" style="background:#3F6B47;color:#F7F6F1;font-size:14px;font-weight:500;padding:9px 16px;white-space:nowrap" style-hover="background:#2E5236;color:#F7F6F1">정기후원가입 1866-3866</a>
       </nav>
@@ -226,6 +249,52 @@
   </section>
 
   
+
+  <section id="sign" style="border-top:1px solid rgba(27,50,39,0.16);scroll-margin-top:62px;padding:clamp(44px,7vw,84px) 0;background:#E6EFE9">
+    <div style="max-width:1040px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
+      <h2 style="margin:0;font-family:'Noto Serif KR',serif;font-weight:700;font-size:clamp(24px,3.6vw,38px);line-height:1.3;letter-spacing:-0.02em;max-width:20em">추징금, 더 적극적으로 추징하십시오</h2>
+      <p style="margin:18px 0 0;font-size:clamp(14.5px,1.5vw,17px);line-height:1.85;color:#3A4A40;max-width:44em;font-weight:300">범죄로 벌어들인 돈 중 실제로 추징하는 비율은 해마다 1%에도 미치지 못합니다. 판결문에 추징금이 적혀도 집행되지 않으면 범죄수익은 그대로 남습니다. 저희는 다음 세 가지를 요구합니다.</p>
+      <ol style="margin:18px 0 0;padding-left:1.3em;font-size:clamp(14.5px,1.5vw,16px);line-height:1.8;color:#2C3A31;max-width:44em">
+        <li style="margin-bottom:6px">추징금 환수 전담 조직(범죄수익환수부)을 확대하고, 판결 확정 전에 재산을 묶어두는 추징보전을 적극 활용할 것</li>
+        <li style="margin-bottom:6px">사건별 선고액, 집행액, 미집행 사유를 정기적으로 공개할 것</li>
+        <li>도피, 사망, 시효 완성으로 환수가 막히지 않도록 독립몰수제 등 제도의 빈틈을 보완할 것</li>
+      </ol>
+
+      <div class="sg-card">
+        <div id="signCount" class="sg-count" hidden><span id="signCountText"></span><span id="signGoalText"></span></div>
+        <div id="signTrack" class="sg-track" hidden><div id="signFill" class="sg-fill"></div></div>
+
+        <form id="signForm" novalidate autocomplete="on">
+          <label class="sg-label" for="sg-name">성함</label>
+          <input class="sg-input" type="text" id="sg-name" name="name" maxlength="30" placeholder="홍길동" autocomplete="name">
+
+          <label class="sg-label" for="sg-phone">휴대전화</label>
+          <input class="sg-input" type="tel" id="sg-phone" name="phone" maxlength="13" placeholder="010-0000-0000" inputmode="numeric" autocomplete="tel">
+
+          <label class="sg-label" for="sg-addr">주소 (동까지)</label>
+          <input class="sg-input" type="text" id="sg-addr" name="address" maxlength="60" placeholder="서울특별시 서초구 서초동" autocomplete="off">
+          <p class="sg-hint">번지와 호수는 적지 않으셔도 됩니다. 시/도, 시/군/구, 동(읍·면)까지만 적어 주세요.</p>
+
+          <fieldset class="sg-radios">
+            <legend class="sg-label">후원회원이신가요?</legend>
+            <label class="sg-radio"><input type="radio" name="donor" value="예"> 예</label>
+            <label class="sg-radio"><input type="radio" name="donor" value="아니오"> 아니오</label>
+          </fieldset>
+
+          <div class="sg-hp" aria-hidden="true"><label for="sg-web">웹사이트</label><input type="text" id="sg-web" name="website" tabindex="-1" autocomplete="off"></div>
+
+          <div class="sg-consent">
+            <input type="checkbox" id="sg-consent" name="consent" value="Y">
+            <label for="sg-consent">개인정보 수집·이용에 동의합니다. 수집 항목은 성함, 휴대전화, 주소(동까지), 후원회원 여부이며, 서명 취합과 중복 확인, 결과 안내에만 사용하고 서명운동 종료 후 6개월 이내에 파기합니다. 동의하지 않으실 수 있으나, 이 경우 서명에 참여하실 수 없습니다.</label>
+          </div>
+
+          <button class="sg-btn" type="submit" id="signBtn">서명 참여하기</button>
+          <p id="signMsg" class="sg-msg" role="status" aria-live="polite" hidden></p>
+        </form>
+        <iframe name="signFrame" id="signFrame" title="서명 전송" hidden style="display:none"></iframe>
+      </div>
+    </div>
+  </section>
 
   <section id="join" style="border-top:1px solid rgba(27,50,39,0.16);scroll-margin-top:62px;padding:clamp(48px,7vw,88px) 0 clamp(52px,8vw,96px)">
     <div style="max-width:1040px;margin:0 auto;padding:0 clamp(20px,4vw,40px)">
@@ -416,6 +485,106 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+<script>
+(function () {
+  // Apps Script 웹 앱 /exec 주소 (서명 접수)
+  var SIGN_ENDPOINT = "https://script.google.com/macros/s/AKfycbw7o3cI2QhCXL6SGZC2Mm9mJUCwWKyXeXWsbQGpX7agQjVVAzzQ6_5kwzSwzwJ-JaY9vw/exec";
+  var SIGN_GOAL = 0;   // 목표 인원. 0이면 목표 막대를 숨기고 참여 인원만 표시
+
+  var pending = null, lastCount = null;
+  function $(id) { return document.getElementById(id); }
+  function digits(s) { return String(s || "").replace(/\D/g, ""); }
+  function fmtPhone(d) {
+    if (d.length === 11) return d.slice(0, 3) + "-" + d.slice(3, 7) + "-" + d.slice(7);
+    if (d.length === 10) return d.slice(0, 3) + "-" + d.slice(3, 6) + "-" + d.slice(6);
+    return d;
+  }
+  function show(kind, text) {
+    var m = $("signMsg"); if (!m) return;
+    m.className = "sg-msg " + kind; m.textContent = text; m.hidden = false;
+  }
+  function validate(f) {
+    var name = f.elements["name"].value.trim();
+    var d = digits(f.elements["phone"].value);
+    var addr = f.elements["address"].value.trim().replace(/\s+/g, " ");
+    if (name.length < 2 || name.length > 30) return "성함을 2자 이상 입력해 주세요.";
+    if (!/^01[016789]\d{7,8}$/.test(d)) return "휴대전화 번호를 010-0000-0000 형식으로 입력해 주세요.";
+    if (addr.length < 6 || addr.split(" ").length < 2) return "주소를 동까지 입력해 주세요. 예: 서울특별시 서초구 서초동";
+    if (!f.elements["donor"].value) return "후원회원 여부를 선택해 주세요.";
+    if (!f.elements["consent"].checked) return "개인정보 수집·이용에 동의하셔야 서명에 참여하실 수 있습니다.";
+    return "";
+  }
+  function finish(ok, text) {
+    if (pending) { clearTimeout(pending.timer); pending = null; }
+    var b = $("signBtn"); if (b) { b.disabled = false; b.textContent = "서명 참여하기"; }
+    if (ok) { var f = $("signForm"); if (f) f.reset(); show("ok", text || "서명해 주셔서 감사합니다."); loadCount(); }
+    else show("err", text || "전송하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+  }
+
+  window.addEventListener("message", function (ev) {
+    var d = ev.data;
+    if (typeof d === "string") { try { d = JSON.parse(d); } catch (e) { return; } }
+    if (!d || d.type !== "ppuri-sign" || !pending || d.token !== pending.token) return;
+    finish(!!d.ok, String(d.message || ""));
+  });
+
+  document.addEventListener("blur", function (e) {
+    if (!e.target || e.target.id !== "sg-phone") return;
+    var d = digits(e.target.value);
+    if (/^01[016789]\d{7,8}$/.test(d)) e.target.value = fmtPhone(d);
+  }, true);
+
+  document.addEventListener("submit", function (e) {
+    var f = e.target;
+    if (!f || f.id !== "signForm") return;
+    e.preventDefault();
+    if (pending) return;
+    var err = validate(f);
+    if (err) { show("err", err); return; }
+
+    var token = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    var p = document.createElement("form");
+    p.method = "POST"; p.action = SIGN_ENDPOINT; p.target = "signFrame";
+    p.acceptCharset = "UTF-8"; p.style.display = "none";
+    ["name", "phone", "address", "donor", "website", "token"].forEach(function (k) {
+      var i = document.createElement("input"); i.type = "hidden"; i.name = k;
+      i.value = k === "token" ? token : k === "phone" ? fmtPhone(digits(f.elements[k].value)) : f.elements[k].value;
+      p.appendChild(i);
+    });
+    document.body.appendChild(p);
+    var b = $("signBtn"); b.disabled = true; b.textContent = "전송 중...";
+    show("info", "전송 중입니다. 창을 닫지 말고 잠시 기다려 주세요.");
+    pending = { token: token, timer: setTimeout(function () {
+      finish(false, "응답을 확인하지 못했습니다. 이미 접수되었을 수 있으니 잠시 뒤 같은 정보로 다시 제출하셔도 중복 접수되지 않습니다.");
+    }, 25000) };
+    p.submit();
+    setTimeout(function () { if (p.parentNode) p.parentNode.removeChild(p); }, 1000);
+  });
+
+  function paintCount() {
+    if (lastCount === null || !$("signCountText")) return;
+    $("signCountText").textContent = lastCount.toLocaleString("ko-KR") + "명 참여";
+    $("signCount").hidden = false;
+    if (SIGN_GOAL > 0) {
+      $("signGoalText").textContent = "목표 " + SIGN_GOAL.toLocaleString("ko-KR") + "명";
+      $("signTrack").hidden = false;
+      $("signFill").style.width = Math.min(100, lastCount / SIGN_GOAL * 100) + "%";
+    }
+  }
+  window.__ppuriCount = function (r) {
+    if (!r || typeof r.count !== "number") return;
+    lastCount = r.count; paintCount();
+    setTimeout(paintCount, 1500); setTimeout(paintCount, 4000);
+  };
+  function loadCount() {
+    var s = document.createElement("script");
+    s.src = SIGN_ENDPOINT + (SIGN_ENDPOINT.indexOf("?") < 0 ? "?" : "&") + "callback=__ppuriCount&_=" + Date.now();
+    s.onload = s.onerror = function () { if (s.parentNode) s.parentNode.removeChild(s); };
+    document.head.appendChild(s);
+  }
+  if (document.readyState === "complete") loadCount(); else window.addEventListener("load", loadCount);
+})();
 </script>
 </body>
 </html>
